@@ -1,1 +1,23 @@
-<p>flash-list works!</p>
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">idCity</th>
+        <th scope="col">idScooter</th>
+        <th scope="col">scooterCode</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let flash of flash">
+        <td>{{ flash.id }}</td>
+        <td>{{ flash.idCity }}</td>
+        <td>{{ flash.idScooter }}</td>
+        <td>{{ flash.scooterCode }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Flash } from './flash';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlashServiceService {
-  private flashUrl: string;
+  flashUrl: string;
   constructor(private http: HttpClient) {
-    this.flashUrl = 'http://localhost:8080/api/flash';
+    this.flashUrl = 'http://localhost:8080/api/flash/';
   }
 
   public findAll(): Observable<Flash[]> {
