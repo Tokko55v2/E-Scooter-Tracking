@@ -30,11 +30,12 @@ public class FlashController {
         return flashService.getById(accountId);
     }
 
-    @PostMapping("/response")
-    @ResponseBody
+    @PostMapping("/update")
     public Mono<Flash> saveOrUpdate(@RequestBody Flash flash){
         return flashService.saveOrUpdate(flash);
     }
+
+
 
 
 }

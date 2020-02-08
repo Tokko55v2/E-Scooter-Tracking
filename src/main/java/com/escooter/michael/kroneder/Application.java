@@ -23,9 +23,7 @@ public class Application {
 			flashRepository.deleteAll()
 					.subscribe(null,null,() -> {
 
-						Stream.of(new Flash(UUID.randomUUID().toString(),"Peter",23.2),
-								new Flash(UUID.randomUUID().toString(),"Hans",22.1),
-								new Flash(UUID.randomUUID().toString(),"michael",23.3))
+						Stream.of(new Flash(),new Flash())
 								.forEach(account -> {
 									flashRepository
 											.save(account)

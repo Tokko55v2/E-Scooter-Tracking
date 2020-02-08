@@ -2,6 +2,7 @@ package com.escooter.michael.kroneder.security;
 
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
@@ -16,14 +17,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain (ServerHttpSecurity httpSecurity){
-         httpSecurity
+         httpSecurity.csrf().disable()
                 .authorizeExchange()
-                .anyExchange()
-                .authenticated()
+                 .pathMatchers(HttpMethod.GET,"api/flash/**").hasAnyRole("ADMIN","USER")
+                .pathMatchers(HttpMethod.POST,"/api/flash/update").hasAnyRole("ADMIN")
+                .pathMatchers("/**").permitAll()
                 .and()
-                .httpBasic()
-                .and()
-                .formLogin();
+                .httpBasic();
 
          return httpSecurity.build();
     }
