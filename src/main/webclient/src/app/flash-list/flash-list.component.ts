@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Flash } from '../flash';
-import { FlashServiceService } from '../flash-service.service';
+import { Scooters } from '../entities/scooters';
+import { FlashServiceService } from '../services/flash-service/flash-service.service';
 
 @Component({
   selector: 'app-flash-list',
@@ -8,7 +8,7 @@ import { FlashServiceService } from '../flash-service.service';
   styleUrls: ['./flash-list.component.scss']
 })
 export class FlashListComponent implements OnInit {
-  flash: Flash[];
+  flash: Scooters[];
   constructor(private flashService: FlashServiceService) { }
 
   ngOnInit(): void {

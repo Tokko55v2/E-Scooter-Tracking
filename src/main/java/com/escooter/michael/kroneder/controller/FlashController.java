@@ -10,15 +10,15 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api/flash")
-public class FlashController {
+public class FlashWebClientController {
 
     private FlashService flashService;
 
-    public FlashController(FlashService flashService){
+    public FlashWebClientController(FlashService flashService){
         this.flashService = flashService;
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public Flux<Flash> getAll(){
         return flashService.findAll();
     }
@@ -30,7 +30,7 @@ public class FlashController {
         return flashService.getById(accountId);
     }
 
-    @PostMapping("/update")
+    @PostMapping
     public Mono<Flash> saveOrUpdate(@RequestBody Flash flash){
         return flashService.saveOrUpdate(flash);
     }
