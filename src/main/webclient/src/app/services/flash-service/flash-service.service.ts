@@ -14,8 +14,8 @@ export class FlashServiceService {
   public findAll(): Observable<Scooters[]> {
     return this.http.get<Scooters[]>(this.flashUrl);
   }
+
   public save(flashScooter: Scooters[]) {
-    console.log(flashScooter[1]);
     return this.http.post<Scooters>(this.flashUrl, flashScooter);
   }
 }

@@ -14,7 +14,7 @@ export class ApiComponent implements OnInit {
 
   urlApi = 'https://api.goflash.com/api/Mobile/Scooters?' +
     'userLatitude=47.36&userLongitude=8.55&lang=de&latitude=47.36' +
-    '&longitude=8.55&latitudeDelta=0.01&longitudeDelta=0.01';
+    '&longitude=8.55&latitudeDelta=10.00&longitudeDelta=10.00';
   constructor(private api: ApiServiceService, private flashS: FlashServiceService,
               private router: Router) { }
 

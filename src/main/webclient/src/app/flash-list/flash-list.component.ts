@@ -16,5 +16,4 @@ export class FlashListComponent implements OnInit {
       this.flash = data;
     });
   }
-
 }

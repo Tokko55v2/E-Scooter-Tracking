@@ -1,25 +1,25 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card bg-dark my-5">
-        <div class="card-body">
-          <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
-          <ul class="text-center list-inline py-3">
-            <li class="list-inline-item">
-              <a routerLink="/api/flash" class="btn btn-info">List Users</a>
-            </li>
-            <li class="list-inline-item">
-              <a routerLink="/api" class="btn btn-info">Call Api</a>
-            </li>
-            <li class="list-inline-item">
-              <a routerLink="/map" class="btn btn-info">Call Map</a>
-            </li>
-            <li class="list-inline-item">
-            </li>
-          </ul>
-        </div>
-      </div>
-      <router-outlet></router-outlet>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">{{title}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a routerLink="/api/flash" class="nav-link" >List Users</a>
+      </li>
+      <li class="nav-item active">
+        <a routerLink="/api" class="nav-link" href="#">Call API</a>
+      </li>
+      <li class="nav-item active">
+        <a routerLink="/map" class="nav-link">Call Map</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
-</div>
+</nav>
+<router-outlet></router-outlet>

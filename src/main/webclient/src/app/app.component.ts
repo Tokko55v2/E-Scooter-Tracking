@@ -14,11 +14,4 @@ export class AppComponent {
   constructor(public http: HttpClient) {
     this.title = 'Scooters - Api Tracker';
   }
-  makeRequest(): void {
-    this.http.get('https://api.goflash.com/api/Mobile/Scooters?userLatitude=47.36' +
-      '&userLongitude=8.55&lang=de&latitude=47.36&longitude=8.55&latitudeDelta=0.01&longitudeDelta=0.01')
-      .subscribe((res: HttpResponse<any>) => {
-        console.log(res.body.data);
-      });
-  }
 }

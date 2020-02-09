@@ -14,7 +14,10 @@ export class Scooters {
   StreetInfo2: string;
   txtRentalPrice: string;
   Locked: boolean;
-  location: Location;
+  location: {
+    latitude: number;
+    longitude: number;
+  };
   GoogleMapsMode: string;
   GoogleMapsEstimatedTimeRatio: number;
   CostEstimationEnabled: boolean;
