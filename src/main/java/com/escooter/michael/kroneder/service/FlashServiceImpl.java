@@ -11,13 +11,16 @@ import reactor.core.publisher.Mono;
 @Service
 public class FlashServiceImpl implements FlashService {
 
+
+
     @Autowired
     private ReactiveMongoTemplate template;
 
     @Override
-    public Mono<Flash> saveOrUpdate(Flash flash) {
-        return template.save(flash);
+    public Flux<Flash> saveOrUpdate(Flux<Flash> flash) {
+        return template.insertAll(flash.collectList());
     }
+
 
     @Override
     public Mono<Flash> getById(String id) {

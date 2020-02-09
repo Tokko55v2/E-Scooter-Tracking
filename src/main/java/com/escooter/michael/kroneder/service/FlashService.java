@@ -6,7 +6,7 @@ import reactor.core.publisher.Mono;
 
 public interface FlashService {
 
-    Mono<Flash> saveOrUpdate(Flash account);
+    Flux<Flash> saveOrUpdate(Flux<Flash> account);
 
     Mono<Flash> getById(String id);
 

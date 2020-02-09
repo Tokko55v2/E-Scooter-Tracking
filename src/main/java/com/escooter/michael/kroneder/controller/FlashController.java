@@ -9,12 +9,13 @@ import reactor.core.publisher.Mono;
 import java.util.logging.Logger;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/flash")
-public class FlashWebClientController {
+public class FlashController {
 
     private FlashService flashService;
 
-    public FlashWebClientController(FlashService flashService){
+    public FlashController(FlashService flashService){
         this.flashService = flashService;
     }
 
@@ -31,7 +32,7 @@ public class FlashWebClientController {
     }
 
     @PostMapping
-    public Mono<Flash> saveOrUpdate(@RequestBody Flash flash){
+    public Flux<Flash> saveOrUpdate(@RequestBody Flux<Flash> flash){
         return flashService.saveOrUpdate(flash);
     }
 
