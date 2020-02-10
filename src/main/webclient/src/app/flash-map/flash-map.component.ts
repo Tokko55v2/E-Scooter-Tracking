@@ -34,7 +34,6 @@ export class FlashMapComponent implements OnInit {
         lng: this.scooter[0].location.longitude,
       };
       this.scooter.forEach((scooter) => {
-        console.log(scooter.location.longitude);
         this.markers.push({
           position: {
             lat: scooter.location.latitude,

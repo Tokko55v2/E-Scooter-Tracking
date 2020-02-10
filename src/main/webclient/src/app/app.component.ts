@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {HttpClient, HttpResponse} from '@angular/common/http';
-import {Scooters} from './entities/scooters';
+import { HttpClient } from '@angular/common/http';
+import { Scooters } from './entities/scooters';
 
 @Component({
   selector: 'app-root',

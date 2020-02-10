@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Scooters } from '../../entities/scooters';
 import { Observable } from 'rxjs';
 @Injectable({
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class FlashServiceService {
   flashUrl: string;
   constructor(private http: HttpClient) {
-    this.flashUrl = 'http://localhost:8080/api/flash/';
+    this.flashUrl = 'http://localhost:8080/api/flash';
   }
 
   public findAll(): Observable<Scooters[]> {

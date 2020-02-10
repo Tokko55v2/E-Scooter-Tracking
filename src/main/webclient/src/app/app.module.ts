@@ -6,10 +6,15 @@ import { AppComponent } from './app.component';
 import { FlashListComponent } from './flash-list/flash-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FlashServiceService } from './services/flash-service/flash-service.service';
-import { ApiComponent } from './api/api.component';
-import { ApiServiceService } from './services/ApiService/api-service.service';
+import { ApiComponent } from './api-flash/api.component';
+import { ApiServiceService } from './services/api-flash-service/api-service.service';
 import { GoogleMapsModule} from '@angular/google-maps';
 import { FlashMapComponent } from './flash-map/flash-map.component';
+import { ApiTierComponent } from './api-tier/api-tier.component';
+import {ApiTierService} from './services/api-tier-service/api-tier.service';
+import {TierService} from './services/tier-service/tier.service';
+import { TierListComponent } from './tier-list/tier-list.component';
+import { TierMapComponent } from './tier-map/tier-map.component';
 
 
 @NgModule({
@@ -18,6 +23,9 @@ import { FlashMapComponent } from './flash-map/flash-map.component';
     FlashListComponent,
     ApiComponent,
     FlashMapComponent,
+    ApiTierComponent,
+    TierListComponent,
+    TierMapComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +33,7 @@ import { FlashMapComponent } from './flash-map/flash-map.component';
     HttpClientModule,
     GoogleMapsModule
   ],
-  providers: [FlashServiceService, ApiServiceService],
+  providers: [FlashServiceService, ApiServiceService, ApiTierService, TierService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

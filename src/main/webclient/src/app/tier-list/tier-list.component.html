@@ -1,0 +1,35 @@
+<div class="card my-5">
+  <div class="card-body">
+
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <th>{{tier.length.toString()}} Flash Scooter in {{tier[1].zoneId}}</th>
+      </thead>
+    </table>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">State</th>
+        <th scope="col">lastLocationUpdate</th>
+        <th scope="col">lastStateChange</th>
+        <th scope="col">batteryLevel</th>
+        <th scope="col">maxSpeed</th>
+        <th scope="col">isRentable</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let tier of tier">
+        <td>{{ tier.id }}</td>
+        <td>{{ tier.zoneId }}</td>
+        <td>{{ tier.state }}</td>
+        <td>{{ tier.lastLocationUpdate }}</td>
+        <td>{{ tier.lastStateChange }}</td>
+        <td>{{ tier.batteryLevel }}</td>
+        <td>{{ tier.maxSpeed }}</td>
+        <td>{{ tier.isRentable }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
