@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 @Document(collation = "flash")
 public class Flash {
 
@@ -34,7 +35,9 @@ public class Flash {
     private String GPSStatus_txt;
     private String GPSStatus_sort;
 
-    public Flash() { }
+
+    public Flash() {
+    }
 
     public String getId() {
         return id;
@@ -43,6 +46,7 @@ public class Flash {
     public void setId(String id) {
         this.id = id;
     }
+
 
     @JsonGetter("idScooter")
     public Integer getIdScooter() {

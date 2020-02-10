@@ -12,28 +12,30 @@ import {Router} from '@angular/router';
 })
 export class ApiTierComponent implements OnInit {
   tierScooter: ScooterTier[];
-  secondsCounter = interval(300000);
+  secondsCounter = interval(150000);
   proxyurl = 'https://cors-anywhere.herokuapp.com/';
   urlApi = 'https://platform.tier-services.io/vehicle?zoneId=VIENNA';
   constructor(private api: ApiTierService, private tierS: TierService, private router: Router) { }
 
   ngOnInit(): void {
+    this.secondsCounter.subscribe(x => {
       this.api
         .getListOfGroup(this.proxyurl + this.urlApi)
         .subscribe(
           data => {
             this.tierScooter = data.data;
+            console.log('Called Tier API');
             this.tierS.save(this.tierScooter).subscribe(res => this.goToUserList());
-            console.log(data);
           },
           err => {
             console.log(err);
           }
         );
+    });
   }
 
   goToUserList() {
-    this.router.navigate(['map']);
+    this.router.navigate(['map/tier']);
   }
 
 }

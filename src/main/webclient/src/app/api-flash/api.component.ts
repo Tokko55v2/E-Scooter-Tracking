@@ -12,10 +12,9 @@ import {interval} from 'rxjs';
 })
 export class ApiComponent implements OnInit {
   scooter: Scooters[];
-  secondsCounter = interval(300);
-  urlApi = 'https://api-flash.goflash.com/api-flash/Mobile/Scooters?' +
-    'userLatitude=47.36&userLongitude=8.55&lang=de&latitude=47.36' +
-    '&longitude=8.55&latitudeDelta=10.00&longitudeDelta=10.00';
+  secondsCounter = interval(1);
+  urlApi = 'https://api.goflash.com/api/Mobile/Scooters?userLatitude=47.36&userLongitude=8.55&' +
+    'lang=de&latitude=47.36&longitude=8.55&latitudeDelta=0.01&longitudeDelta=0.01';
   constructor(private api: ApiServiceService, private flashS: FlashServiceService,
               private router: Router) { }
 
@@ -37,7 +36,7 @@ export class ApiComponent implements OnInit {
   }
 
   goToUserList() {
-    this.router.navigate(['map']);
+    this.router.navigate(['map/flash']);
   }
 
 }

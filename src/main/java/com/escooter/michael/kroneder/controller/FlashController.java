@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.logging.Logger;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -26,17 +25,11 @@ public class FlashController {
 
     @GetMapping(value = "/{id}")
     public Mono<Flash> getById(@PathVariable("id") String accountId){
-        System.out.println(accountId);
-        Logger.getLogger(accountId);
         return flashService.getById(accountId);
     }
 
     @PostMapping
-    public Flux<Flash> saveOrUpdate(@RequestBody Flux<Flash> flash){
-        return flashService.saveOrUpdate(flash);
+    public Flux<Flash> save(@RequestBody Flux<Flash> flash){
+        return flashService.save(flash);
     }
-
-
-
-
 }
