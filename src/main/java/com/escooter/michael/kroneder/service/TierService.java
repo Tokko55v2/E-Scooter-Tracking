@@ -12,5 +12,7 @@ public interface TierService {
 
     Mono<Tier> getById(String id);
 
+    List<Tier> getAmountOfX(String amount);
+
     List<Tier> findAll();
 }

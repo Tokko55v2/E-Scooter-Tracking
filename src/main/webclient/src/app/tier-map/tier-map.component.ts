@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
 import {TierService} from '../services/tier-service/tier.service';
 import {ScooterTier} from '../entities/scooter-tier';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-tier-map',
@@ -25,8 +26,11 @@ export class TierMapComponent implements OnInit {
   };
   markers = [];
   infoContent = '';
+  isLoading$: boolean;
   ngOnInit(): void {
-    this.tierService.findAll().subscribe(data => {
+    this.tierService.findAll().pipe(
+      tap(() => {this.isLoading$ = true; })
+    ).subscribe(data => {
       this.scooter = data;
       this.center = {
         lat: this.scooter[0].lat,
@@ -46,6 +50,7 @@ export class TierMapComponent implements OnInit {
         });
       });
     });
+    this.isLoading$ = false;
   }
 
   zoomIn() {

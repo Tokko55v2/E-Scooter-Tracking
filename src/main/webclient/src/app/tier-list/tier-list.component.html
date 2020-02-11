@@ -1,6 +1,14 @@
-<div class="card my-5">
+<div class="sk-folding-cube" *ngIf="!isLoading$">
+  <div class="sk-cube1 sk-cube"></div>
+  <div class="sk-cube2 sk-cube"></div>
+  <div class="sk-cube4 sk-cube"></div>
+  <div class="sk-cube3 sk-cube"></div>
+</div>
+<div class="card my-5"  *ngIf="isLoading$">
   <div class="card-body">
-
+    <button (click)="getAmount(250)">250</button>
+    <button (click)="getAmount(350)">350</button>
+    <button (click)="getAll()">All</button>
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
       <th>{{tier.length.toString()}} Flash Scooter in {{tier[1].zoneId}}</th>
@@ -34,3 +42,4 @@
     </table>
   </div>
 </div>
+

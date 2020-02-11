@@ -24,7 +24,13 @@ public class TierController {
         return service.findAll();
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{amount}")
+    public List<Tier> getFirstX(@PathVariable("amount") String amount){
+        return service.getAmountOfX(amount);
+    }
+
+
+    @GetMapping(value = "scooter/{id}")
     public Mono<Tier> getById(@PathVariable("id") String tierId){
         return service.getById(tierId);
     }

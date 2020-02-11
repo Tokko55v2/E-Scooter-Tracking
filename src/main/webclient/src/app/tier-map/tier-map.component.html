@@ -1,4 +1,11 @@
+<div class="sk-folding-cube" *ngIf="!isLoading$">
+  <div class="sk-cube1 sk-cube"></div>
+  <div class="sk-cube2 sk-cube"></div>
+  <div class="sk-cube4 sk-cube"></div>
+  <div class="sk-cube3 sk-cube"></div>
+</div>
 <google-map
+  *ngIf="isLoading$"
   height="640px"
   width="100%"
   [zoom]="zoom"
@@ -19,7 +26,7 @@
   <map-info-window>{{ infoContent }}</map-info-window>
 </google-map>
 
-<div class="text-center">
+<div class="text-center" *ngIf="isLoading$">
   <button class="btn btn-primary" (click)="zoomIn()">Zoom in</button>
   <button class="btn btn-primary" (click)="zoomOut()">Zoom out</button>
   <button class="btn btn-primary" (click)="logCenter()">Log center</button>
