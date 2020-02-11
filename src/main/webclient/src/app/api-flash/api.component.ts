@@ -12,14 +12,13 @@ import {interval} from 'rxjs';
 })
 export class ApiComponent implements OnInit {
   scooter: Scooters[];
-  secondsCounter = interval(1);
+  secondsCounter = interval(150000);
   urlApi = 'https://api.goflash.com/api/Mobile/Scooters?userLatitude=47.36&userLongitude=8.55&' +
     'lang=de&latitude=47.36&longitude=8.55&latitudeDelta=0.01&longitudeDelta=0.01';
   constructor(private api: ApiServiceService, private flashS: FlashServiceService,
               private router: Router) { }
 
   ngOnInit(): void {
-    this.secondsCounter.subscribe(x =>
       this.api
       .getListOfGroup(this.urlApi)
       .subscribe(
@@ -31,12 +30,11 @@ export class ApiComponent implements OnInit {
         err => {
           console.log(err);
         }
-      )
     );
   }
 
   goToUserList() {
-    this.router.navigate(['map/flash']);
+    this.router.navigate(['flash']);
   }
 
 }

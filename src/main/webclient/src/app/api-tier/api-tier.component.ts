@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class ApiTierComponent implements OnInit {
   tierScooter: ScooterTier[];
-  secondsCounter = interval(150000);
+  secondsCounter = interval(180000);
   proxyurl = 'https://cors-anywhere.herokuapp.com/';
   urlApi = 'https://platform.tier-services.io/vehicle?zoneId=VIENNA';
   constructor(private api: ApiTierService, private tierS: TierService, private router: Router) { }
@@ -25,17 +25,16 @@ export class ApiTierComponent implements OnInit {
           data => {
             this.tierScooter = data.data;
             console.log('Called Tier API');
-            this.tierS.save(this.tierScooter).subscribe(res => this.goToUserList());
+            this.tierS.save(this.tierScooter).subscribe();
           },
           err => {
             console.log(err);
-          }
-        );
+          });
     });
   }
 
   goToUserList() {
-    this.router.navigate(['map/tier']);
+    this.router.navigate(['tier']);
   }
 
 }

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("api/tier")
@@ -18,7 +20,7 @@ public class TierController {
     }
 
     @GetMapping
-    public Flux<Tier> getAll(){
+    public List<Tier> getAll(){
         return service.findAll();
     }
 

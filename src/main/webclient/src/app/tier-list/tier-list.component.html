@@ -9,17 +9,19 @@
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
       <tr>
+        <th scope="col">Licence Plate</th>
         <th scope="col">City</th>
         <th scope="col">Status</th>
-        <th scope="col">Last Location Update</th>
-        <th scope="col">Last Status Change</th>
+        <th scope="col">Last location Update</th>
+        <th scope="col">Last state Change</th>
         <th scope="col">Battery Level</th>
         <th scope="col">Max Speed</th>
-        <th scope="col">isRentable</th>
+        <th scope="col">Is Rentable</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let tier of tier">
+        <td>{{ tier.licencePlate }}</td>
         <td>{{ tier.zoneId }}</td>
         <td>{{ tier.state }}</td>
         <td>{{ tier.lastLocationUpdate }}</td>
