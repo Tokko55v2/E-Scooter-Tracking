@@ -29,7 +29,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let tier of tier">
-        <td>{{ tier.licencePlate }}</td>
+        <td (click)="getSpecificScooter(tier.licencePlate)">{{ tier.licencePlate }}</td>
         <td>{{ tier.zoneId }}</td>
         <td>{{ tier.state }}</td>
         <td>{{ tier.lastLocationUpdate }}</td>

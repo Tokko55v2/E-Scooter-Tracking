@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ScooterTier} from '../entities/scooter-tier';
 import {TierService} from '../services/tier-service/tier.service';
 import { tap } from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-tier-list',
@@ -14,7 +15,7 @@ export class TierListComponent implements OnInit {
   error: any;
   isLoading$: boolean;
   amount: number;
-  constructor(private tierService: TierService) {this.amount = 150; }
+  constructor(private tierService: TierService, private router: Router) {this.amount = 150; }
 
   ngOnInit(): void {
     this.getAmount( this.amount );
@@ -37,5 +38,17 @@ export class TierListComponent implements OnInit {
     });
     this.isLoading$ = false;
   }
-
+  public getSpecificScooter(scooterPlate: string) {
+    this.obs = this.tierService.findScooter(scooterPlate).pipe(
+      tap(() => {this.isLoading$ = true; })).subscribe(data => {
+      this.tier = data;
+    }, err => {
+      this.error = err;
+    });
+    this.isLoading$ = false;
+    this.goToMainSite();
+  }
+  goToMainSite() {
+    this.router.navigate(['#']);
+  }
 }

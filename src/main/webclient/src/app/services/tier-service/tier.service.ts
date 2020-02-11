@@ -17,6 +17,9 @@ export class TierService {
   public findXScooters(amount: number): Observable<ScooterTier[]> {
     return this.http.get<ScooterTier[]>(this.tierUrl + '/' + amount);
   }
+  public findScooter(scooterPlate: string): Observable<ScooterTier[]> {
+    return this.http.get<ScooterTier[]>(this.tierUrl + '/' + scooterPlate);
+  }
   public save(tierScooter: ScooterTier[]) {
     return this.http.post<ScooterTier>(this.tierUrl, tierScooter);
   }
