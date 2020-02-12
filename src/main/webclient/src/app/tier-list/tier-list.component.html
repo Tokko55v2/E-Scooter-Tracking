@@ -6,9 +6,9 @@
 </div>
 <div class="card my-5"  *ngIf="isLoading$">
   <div class="card-body">
-    <button (click)="getAmount(250)">250</button>
-    <button (click)="getAmount(350)">350</button>
-    <button (click)="getAll()">All</button>
+    <button class="btn btn-outline-success my-2 mr-sm-2" (click)="getAmount(250)">Call 250</button>
+    <button class="btn btn-outline-success my-2 mr-sm-2" (click)="getAmount(350)">Call 350</button>
+    <button class="btn btn-outline-success my-2 mr-sm-2" (click)="getAll()">Call all</button>
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
       <th>{{tier.length.toString()}} Flash Scooter in {{tier[1].zoneId}}</th>
@@ -28,15 +28,15 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let tier of tier">
-        <td (click)="getSpecificScooter(tier.licencePlate)">{{ tier.licencePlate }}</td>
-        <td>{{ tier.zoneId }}</td>
-        <td>{{ tier.state }}</td>
-        <td>{{ tier.lastLocationUpdate }}</td>
-        <td>{{ tier.lastStateChange }}</td>
-        <td>{{ tier.batteryLevel }}</td>
-        <td>{{ tier.maxSpeed }}</td>
-        <td>{{ tier.isRentable }}</td>
+      <tr class="hoverOver" *ngFor="let tier of tier">
+        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.licencePlate }}</td>
+        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.zoneId }}</td>
+        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.state }}</td>
+        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.lastLocationUpdate }}</td>
+        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.lastStateChange }}</td>
+        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.batteryLevel }}</td>
+        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.maxSpeed }}</td>
+        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.isRentable }}</td>
       </tr>
       </tbody>
     </table>

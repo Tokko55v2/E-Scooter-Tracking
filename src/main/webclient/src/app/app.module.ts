@@ -14,6 +14,7 @@ import {ApiTierService} from './services/api-tier-service/api-tier.service';
 import {TierService} from './services/tier-service/tier.service';
 import { TierListComponent } from './tier-list/tier-list.component';
 import { TierMapComponent } from './tier-map/tier-map.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { TierMapComponent } from './tier-map/tier-map.component';
     ApiTierComponent,
     TierListComponent,
     TierMapComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

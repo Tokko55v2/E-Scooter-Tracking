@@ -24,7 +24,6 @@ export class ApiComponent implements OnInit {
       .subscribe(
         data => {
           this.scooter = data.Data.Scooters;
-          console.log('Called Api');
           this.flashS.save(data.Data.Scooters).subscribe(result => this.goToUserList());
         },
         err => {

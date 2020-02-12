@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 
 
 @SpringBootApplication
-public class Application {
 
+public class Application {
 
 	@Autowired
 	MongoClient mongoClient;

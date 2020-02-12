@@ -11,14 +11,17 @@ export class TierService {
   constructor(private http: HttpClient) {
     this.tierUrl = 'http://localhost:8080/api/tier';
   }
-  public findAll(): Observable<ScooterTier[]> {
-    return this.http.get<ScooterTier[]>(this.tierUrl);
-  }
+
   public findXScooters(amount: number): Observable<ScooterTier[]> {
     return this.http.get<ScooterTier[]>(this.tierUrl + '/' + amount);
   }
-  public findScooter(scooterPlate: string): Observable<ScooterTier[]> {
-    return this.http.get<ScooterTier[]>(this.tierUrl + '/' + scooterPlate);
+  public findScooters(scooterPlate: string): Observable<ScooterTier[]> {
+    console.log(scooterPlate);
+    if (scooterPlate == null) {
+      return this.http.get<ScooterTier[]>(this.tierUrl + '/scooters');
+    } else {
+      return this.http.get<ScooterTier[]>(this.tierUrl + '/scooters/' + scooterPlate);
+    }
   }
   public save(tierScooter: ScooterTier[]) {
     return this.http.post<ScooterTier>(this.tierUrl, tierScooter);

@@ -4,7 +4,6 @@ import com.escooter.michael.kroneder.entity.Tier;
 import com.escooter.michael.kroneder.service.TierService;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class TierController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping(value = "scooters")
     public List<Tier> getAll(){
         return service.findAll();
     }
@@ -29,12 +28,10 @@ public class TierController {
         return service.getAmountOfX(amount);
     }
 
-
-    @GetMapping(value = "scooter/{id}")
-    public Mono<Tier> getById(@PathVariable("id") String tierId){
-        return service.getById(tierId);
+    @GetMapping(value = "scooters/{licencePlate}")
+    public Flux<Tier> getById(@PathVariable("licencePlate") String licencePlate){
+        return service.getById(licencePlate);
     }
-
     @PostMapping
     public Flux<Tier> save(@RequestBody Flux<Tier> tier){
         return service.save(tier);

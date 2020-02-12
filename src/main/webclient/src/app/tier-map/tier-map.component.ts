@@ -28,7 +28,17 @@ export class TierMapComponent implements OnInit {
   infoContent = '';
   isLoading$: boolean;
   ngOnInit(): void {
-    this.tierService.findAll().pipe(
+    if (localStorage.getItem('scooterPlate') == null) {
+      console.log(localStorage.getItem('scooterPlate'));
+      this.getScooters(null);
+    } else {
+      this.getScooters(localStorage.getItem('scooterPlate'));
+    }
+  }
+
+
+  getScooters(scooterPlate: string) {
+    this.tierService.findScooters(scooterPlate).pipe(
       tap(() => {this.isLoading$ = true; })
     ).subscribe(data => {
       this.scooter = data;
@@ -37,35 +47,45 @@ export class TierMapComponent implements OnInit {
         lng: this.scooter[0].lng,
       };
       this.scooter.forEach((scooter) => {
-        this.markers.push({
-          position: {
-            lat: scooter.lat,
-            lng: scooter.lng,
-          },
-          clickable: true,
-          info: scooter.batteryLevel + ' %',
-          options: {
-            animation: google.maps.Animation.DROP,
-          },
-        });
+        if (!(this.markers.includes(scooter.lat) && !(this.markers.includes(scooter.lng)))) {
+          this.markers.push({
+            position: {
+              lat: scooter.lat,
+              lng: scooter.lng,
+            },
+            clickable: true,
+            info: scooter.batteryLevel + ' %',
+            options: {
+              animation: google.maps.Animation.DROP,
+            },
+          });
+        }
       });
     });
     this.isLoading$ = false;
+    localStorage.removeItem('scooterPlate');
   }
+
 
   zoomIn() {
     if (this.zoom < this.option.maxZoom) {
       this.zoom++;
     }
   }
+
+
   zoomOut() {
     if (this.zoom > this.option.minZoom) {
       this.zoom--;
     }
   }
+
+
   click(event: google.maps.MouseEvent) {
     console.log(event);
   }
+
+
   openInfo(marker: MapMarker, content) {
     this.infoContent = content;
     this.info.open(marker);

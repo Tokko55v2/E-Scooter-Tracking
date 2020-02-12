@@ -6,6 +6,7 @@ import { FlashMapComponent } from './flash-map/flash-map.component';
 import {ApiTierComponent} from './api-tier/api-tier.component';
 import {TierListComponent} from './tier-list/tier-list.component';
 import {TierMapComponent} from './tier-map/tier-map.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'api/flash', component: ApiComponent},
   { path: 'api/tier', component: ApiTierComponent},
   { path: 'map/flash', component: FlashMapComponent},
-  { path: 'map/tier', component: TierMapComponent}
+  { path: 'map/tier', component: TierMapComponent},
+  { path: '', component: DashboardComponent}
 ];
 
 @NgModule({

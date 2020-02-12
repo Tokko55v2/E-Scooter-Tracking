@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "tier")
+@Document
 public class Tier {
 
     @Id
@@ -24,6 +24,23 @@ public class Tier {
     Integer code;
     Boolean isRentable;
     String iotVendor;
+
+    public Tier(String id, String state, String lastLocationUpdate, String lastStateChange, Integer batteryLevel, Float lat, Float lng, Integer maxSpeed, String zoneId, String licencePlate, String vin, Integer code, Boolean isRentable, String iotVendor) {
+        this.id = id;
+        this.state = state;
+        this.lastLocationUpdate = lastLocationUpdate;
+        this.lastStateChange = lastStateChange;
+        this.batteryLevel = batteryLevel;
+        this.lat = lat;
+        this.lng = lng;
+        this.maxSpeed = maxSpeed;
+        this.zoneId = zoneId;
+        this.licencePlate = licencePlate;
+        this.vin = vin;
+        this.code = code;
+        this.isRentable = isRentable;
+        this.iotVendor = iotVendor;
+    }
 
     public Tier(){
 

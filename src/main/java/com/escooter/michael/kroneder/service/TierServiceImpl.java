@@ -4,12 +4,8 @@ import com.escooter.michael.kroneder.entity.Tier;
 import com.escooter.michael.kroneder.repository.TierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-import static java.lang.Math.min;
 
 
 import java.util.ArrayList;
@@ -19,40 +15,41 @@ import java.util.List;
 public class TierServiceImpl implements TierService {
 
     @Autowired
-    private ReactiveMongoTemplate template;
-
     private TierRepository tierRepository;
 
     public TierServiceImpl(TierRepository tierRepository){
         this.tierRepository = tierRepository;
     }
 
+
     @CreatedDate
     @Override
     public Flux<Tier> save(Flux<Tier> tiers) {
-        return template.insertAll(tiers.collectList());
+        return tierRepository.saveAll(tiers);
     }
 
     @Override
-    public Mono<Tier> getById(String id) {
-        return null;
+    public Flux<Tier> getById(String licencePlate) {
+        return tierRepository.findAllByLicencePlate(licencePlate);
     }
 
     @Override
     public List<Tier> getAmountOfX(String amount) {
-        List<Tier> tierList = template.findAll(Tier.class).collectList().block();
+        List<Tier> tierList = tierRepository.findAll().collectList().block();
         return getAmount(Integer.parseInt(amount),tierList);
     }
 
     @Override
     public List<Tier> findAll() {
-        List<Tier> tierList = template.findAll(Tier.class).collectList().block();
+        List<Tier> tierList = tierRepository.findAll().collectList().block();
         List<Tier> allTiersList = new ArrayList<>();
         boolean isInList = false;
         for (Tier t: tierList) {
             for (Tier j: allTiersList) {
-                if((j.getId().equals(t.getId()))){
-                    isInList = true;
+                if(t.getId() != null || j.getId() != null){
+                    if((j.getId().equals(t.getId()))){
+                        isInList = true;
+                    }
                 }
             }
             if(!isInList){
@@ -66,11 +63,5 @@ public class TierServiceImpl implements TierService {
     private List<Tier> getAmount(int amount,List<Tier> tierList){
         List<Tier> subList = new ArrayList<>(tierList.subList(0,amount));
         return subList;
-    }
-
-    private void laterFuntion(){
-        int counter = 0;
-
-        //return allTiersList;
     }
 }
