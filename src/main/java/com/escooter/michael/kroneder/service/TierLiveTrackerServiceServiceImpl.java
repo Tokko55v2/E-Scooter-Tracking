@@ -17,10 +17,10 @@ public class TierLiveTrackerServiceServiceImpl implements TierLiveTrackerService
     TierLiveTrackerRepository tierLiveTrackerRepository;
 
     @Override
-    public void save(Mono<Integer> count) {
+    public void save(TierTracker tierTrackerMono) {
         ZonedDateTime now = ZonedDateTime.now(ZoneOffset.UTC);
-        TierTracker tier = new TierTracker(null,count,now);
-        tierLiveTrackerRepository.save(tier);
+        tierTrackerMono.setTimestampCodec(now);
+        tierLiveTrackerRepository.save(tierTrackerMono);
     }
 
     public Flux<TierTracker> getAll(){
