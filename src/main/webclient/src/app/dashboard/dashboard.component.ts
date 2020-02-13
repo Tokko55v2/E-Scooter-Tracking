@@ -42,8 +42,8 @@ export class DashboardComponent implements OnInit {
 
   lineChartColors: Color[] = [
     {
-      borderColor: 'rgba(213,80,143,1',
-      backgroundColor: 'rgba(213,80,143,0.3',
+      borderColor: 'rgba(213,80,143,1)',
+      backgroundColor: 'rgba(213,80,143,0.3)',
     },
   ];
 
