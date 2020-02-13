@@ -10,11 +10,12 @@ import { ApiServiceService } from './services/api-flash-service/api-service.serv
 import { GoogleMapsModule} from '@angular/google-maps';
 import { FlashMapComponent } from './flash-map/flash-map.component';
 import { ApiTierComponent } from './api-tier/api-tier.component';
-import {ApiTierService} from './services/api-tier-service/api-tier.service';
-import {TierService} from './services/tier-service/tier.service';
+import { ApiTierService} from './services/api-tier-service/api-tier.service';
+import { TierService} from './services/tier-service/tier.service';
 import { TierListComponent } from './tier-list/tier-list.component';
 import { TierMapComponent } from './tier-map/tier-map.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    ChartsModule
   ],
   providers: [FlashServiceService, ApiServiceService, ApiTierService, TierService],
   bootstrap: [AppComponent]

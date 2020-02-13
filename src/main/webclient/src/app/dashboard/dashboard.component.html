@@ -2,8 +2,21 @@
 <div class="row my-2 ml-1">
   <div class="column">
     <p>Live tracker of active scooters
-      <br /> in <code>.{{tierScooter[0].zoneId.toString()}}</code> {{tierScooter.length.toString()}}
+      <br /> in <code>.VIENNA</code> {{counter}}
     </p>
+
+    <div class="chart-wrapper my-5 ml-2">
+      <canvas baseChart
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              [plugins]="lineChartPlugins">
+      </canvas>
+    </div>
+
   </div>
   <div class="column">
     <p>Facts about the Project:</p>
@@ -29,9 +42,9 @@
     <p>maxSpeed: <code> type number in JAVA int</code></p>
     <p>zoneId: <code> the zone where the scooter is like VIENNA</code></p>
     <p>licencePlate: <code> is a string</code></p>
-    <p>vin: <code> zoneId and licencePlate like AC12345</code></p>
+    <p>vin: <code> zoneId and licencePlate together like AC12345</code></p>
     <p>code: <code> ¯\_(⊙︿⊙)_/¯</code></p>
-    <p>isRental: <code> seems always true</code></p>
+    <p>isRental: <code> seems always true. Scooter is not visible when state false</code></p>
   </div>
 </div>
 </body>

@@ -2,7 +2,6 @@ package com.escooter.michael.kroneder.controller;
 
 import com.escooter.michael.kroneder.entity.TierTracker;
 import com.escooter.michael.kroneder.service.TierLiveTrackerService;
-import io.swagger.annotations.ResponseHeader;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -18,8 +17,8 @@ public class TierLiveTrackerController {
         this.scooterLiveTracker = scooterLiveTracker;
     }
     @PostMapping()
-    public void save(@RequestBody TierTracker trackerMono){
-        scooterLiveTracker.save(trackerMono);
+    public Mono<TierTracker> save(@RequestBody TierTracker trackerMono){
+       return scooterLiveTracker.save(trackerMono);
     }
 
     @GetMapping

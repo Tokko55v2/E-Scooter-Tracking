@@ -1,21 +1,20 @@
 package com.escooter.michael.kroneder.entity;
 
-import com.mongodb.BSONTimestampCodec;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import reactor.core.publisher.Mono;
 
-import java.time.ZonedDateTime;
 
 @Document
 public class TierTracker {
 
     @Id
     private String id;
-    private Mono<Integer> scooterCount;
-    private ZonedDateTime timestampCodec;
+    private Integer scooterCount;
+    private String timestampCodec;
 
-    public TierTracker(String id, Mono<Integer> scooterCount, ZonedDateTime timestampCodec) {
+    public TierTracker(String id, Integer scooterCount, String timestampCodec) {
         this.id = id;
         this.scooterCount = scooterCount;
         this.timestampCodec = timestampCodec;
@@ -29,19 +28,23 @@ public class TierTracker {
         this.id = id;
     }
 
-    public Mono<Integer> getScooterCount() {
+    @JsonGetter("scooterCounter")
+    public Integer getScooterCount() {
         return scooterCount;
     }
 
-    public void setScooterCount(Mono<Integer> scooterCount) {
+    @JsonSetter("scooterCounter")
+    public void setScooterCount(Integer scooterCount) {
         this.scooterCount = scooterCount;
     }
 
-    public ZonedDateTime getTimestampCodec() {
+    @JsonGetter("timestamp")
+    public String getTimestampCodec() {
         return timestampCodec;
     }
 
-    public void setTimestampCodec(ZonedDateTime timestampCodec) {
+    @JsonSetter("timestamp")
+    public void setTimestampCodec(String timestampCodec) {
         this.timestampCodec = timestampCodec;
     }
 }
