@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("tier/track")
+@RequestMapping("api/tier/track")
 public class TierLiveTrackerController {
 
     private TierLiveTrackerService scooterLiveTracker;
