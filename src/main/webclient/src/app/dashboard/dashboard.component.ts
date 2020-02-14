@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   tierScooterStatistic: Livetracker[];
   counter: number;
   isFinished: boolean;
-  timeinterval =  interval(120000);
+  timeinterval =  interval(240000);
   proxyurl = 'https://cors-anywhere.herokuapp.com/';
   urlApi = 'https://platform.tier-services.io/vehicle?zoneId=VIENNA';
 
@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit {
   scooterActiveDateData = [];
   yearAndDay: string;
   time: string;
+  diagramLabel: string;
 
   lineChartData: ChartDataSets[] = [
     { data: this.scooterActiveData, label: 'Active Scooters 2020-02-13' },
@@ -55,6 +56,7 @@ export class DashboardComponent implements OnInit {
               private tierService: TierService) {
     this.counter = 0;
     this.isFinished = false;
+    this.diagramLabel = '';
   }
 
   ngOnInit(): void {
@@ -91,8 +93,17 @@ export class DashboardComponent implements OnInit {
           this.scooterActiveData.push(x.scooterCounter);
           this.yearAndDay = x.timestamp.substring(0, 10);
           this.time = x.timestamp.substring(11, 16);
-          this.scooterActiveDateData.push(this.time);
+          let isIncluded = false;
+          this.scooterActiveDateData.forEach( y => {
+            if (y === this.time) {
+              isIncluded = true;
+            }
+          });
+          if (isIncluded === false) {
+            this.scooterActiveDateData.push(this.time);
+          }
         });
+        console.log(this.diagramLabel);
       });
   }
 
