@@ -2,7 +2,6 @@ package com.escooter.michael.kroneder.controller;
 
 import com.escooter.michael.kroneder.entity.Tier;
 import com.escooter.michael.kroneder.service.TierService;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 

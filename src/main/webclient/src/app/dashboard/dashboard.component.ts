@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Scooters} from '../entities/scooters';
 import {HttpClient} from '@angular/common/http';
 import {ApiTierService} from '../services/api-tier-service/api-tier.service';
 import {ScooterTier} from '../entities/scooter-tier';
@@ -16,7 +15,6 @@ import { Color, Label } from 'ng2-charts';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  flash: Scooters;
   tierScooter: ScooterTier[];
   tierScooterStatistic: Livetracker[];
   counter: number;
