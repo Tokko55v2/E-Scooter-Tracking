@@ -20,18 +20,15 @@ public class FlashController {
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('ADMIN')")
     public Flux<Flash> getAll(){
         return flashService.findAll();
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value = "/{id}")
     public Mono<Flash> getById(@PathVariable("id") String accountId){
         return flashService.getById(accountId);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public Flux<Flash> save(@RequestBody Flux<Flash> flash){
         return flashService.save(flash);

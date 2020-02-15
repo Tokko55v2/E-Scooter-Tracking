@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://localhost:8080',
+  tierUrl: 'http://localhost:8080/api/tier',
+  tierTrackUrl: 'http://localhost:8080/api/tier/track'
 };
 
 /*
