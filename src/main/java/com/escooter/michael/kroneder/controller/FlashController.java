@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RequestMapping("/api/flash")
 public class FlashController {
 

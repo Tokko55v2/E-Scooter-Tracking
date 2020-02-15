@@ -21,6 +21,7 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
     private JwtUtil jwtUtil;
 
     @Override
+    @SuppressWarnings("unchecked")
     public Mono<Authentication> authenticate(Authentication authentication) {
         String authToken = authentication.getCredentials().toString();
 

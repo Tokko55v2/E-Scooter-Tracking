@@ -8,7 +8,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RequestMapping("api/tier/track")
 public class TierLiveTrackerController {
 
@@ -18,13 +18,11 @@ public class TierLiveTrackerController {
         this.scooterLiveTracker = scooterLiveTracker;
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping()
     public Mono<TierTracker> save(@RequestBody TierTracker trackerMono){
        return scooterLiveTracker.save(trackerMono);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public Flux<TierTracker> findAll(){
         return scooterLiveTracker.getAll();

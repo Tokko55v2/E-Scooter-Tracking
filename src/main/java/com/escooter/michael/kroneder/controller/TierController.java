@@ -9,7 +9,7 @@ import reactor.core.publisher.Flux;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RequestMapping("api/tier")
 public class TierController {
 

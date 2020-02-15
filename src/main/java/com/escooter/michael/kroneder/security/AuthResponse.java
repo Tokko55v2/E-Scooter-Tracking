@@ -1,8 +1,6 @@
 package com.escooter.michael.kroneder.security;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
@@ -13,4 +11,6 @@ public class AuthResponse {
     public AuthResponse(String token) {
         this.token = token;
     }
+
+    public AuthResponse(){}
 }

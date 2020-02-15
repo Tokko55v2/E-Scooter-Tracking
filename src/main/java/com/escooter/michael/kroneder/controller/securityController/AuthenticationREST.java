@@ -1,4 +1,4 @@
-package com.escooter.michael.kroneder.controller;
+package com.escooter.michael.kroneder.controller.securityController;
 
 import com.escooter.michael.kroneder.security.AuthRequest;
 import com.escooter.michael.kroneder.security.AuthResponse;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class AuthenticationREST {
 
     @Autowired
