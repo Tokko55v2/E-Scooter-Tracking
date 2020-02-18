@@ -20,7 +20,7 @@ class ApplicationTests {
 
 	@Test
 	void Tier() {
-		tierRepository.save(new Tier(null,"ACTIVE","2020-02-11T10:55:32Z","2020-02-04T22:06:22Z",30, (float)48.21943664550781,(float)16.40237808227539,20,"VIENNA","222364","AC222364",222364,true,"okai")).block();
+		tierRepository.save(new Tier(null,"ACTIVE","2020-02-11T10:55:32Z","2020-02-04T22:06:22Z",30, (float)48.21943664550781,(float)16.40237808227539,20,"VIENNA","222364","AC222364",222364,true,"okai","")).block();
 		Flux<Tier> accountMono = tierRepository
 				.findAllByLicencePlate("222364");
 

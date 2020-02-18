@@ -24,8 +24,11 @@ public class Tier {
     Integer code;
     Boolean isRentable;
     String iotVendor;
+    String timeStamp;
 
-    public Tier(String id, String state, String lastLocationUpdate, String lastStateChange, Integer batteryLevel, Float lat, Float lng, Integer maxSpeed, String zoneId, String licencePlate, String vin, Integer code, Boolean isRentable, String iotVendor) {
+    public Tier(String id, String state, String lastLocationUpdate, String lastStateChange, Integer batteryLevel,
+                Float lat, Float lng, Integer maxSpeed, String zoneId, String licencePlate, String vin,
+                Integer code, Boolean isRentable, String iotVendor, String timeStamp) {
         this.id = id;
         this.state = state;
         this.lastLocationUpdate = lastLocationUpdate;
@@ -40,6 +43,7 @@ public class Tier {
         this.code = code;
         this.isRentable = isRentable;
         this.iotVendor = iotVendor;
+        this.timeStamp = timeStamp;
     }
 
     public Tier(){
@@ -52,6 +56,16 @@ public class Tier {
 
     public void setIdDB(String idDB) {
         this.idDB = idDB;
+    }
+
+    @JsonGetter("timeStamp")
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    @JsonSetter("timeStamp")
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
     @JsonGetter("id")
