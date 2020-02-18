@@ -23,7 +23,7 @@ export class ApiTierComponent implements OnInit {
         data => {
           this.tierScooter = data.data;
           console.log('Called Tier API');
-          this.tierS.save(this.tierScooter).subscribe();
+          this.tierS.saveScooter(this.tierScooter).subscribe();
         },
         err => {
           console.log(err);

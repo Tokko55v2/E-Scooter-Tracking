@@ -13,4 +13,5 @@ export class ScooterTier {
   code: number;
   isRentable: boolean;
   iotVendor: string;
+  timeStamp: string;
 }

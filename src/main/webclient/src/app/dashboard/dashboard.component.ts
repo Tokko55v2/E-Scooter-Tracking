@@ -5,7 +5,7 @@ import {ScooterTier} from '../entities/scooter-tier';
 import {TierService} from '../services/tier-service/tier.service';
 import {Livetracker} from '../entities/livetracker';
 import {interval} from 'rxjs';
-import { ChartDataSets, ChartOptions } from 'chart.js';
+import { ChartDataSets } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
 
@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   tierScooterStatistic: Livetracker[];
   counter: number;
   isFinished: boolean;
+  
   timeinterval =  interval(240000);
   proxyurl = 'https://cors-anywhere.herokuapp.com/';
   urlApi = 'https://platform.tier-services.io/vehicle?zoneId=VIENNA';
@@ -58,6 +59,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('Started API subscription');
     this.timeinterval.subscribe(x => {
       this.api
         .getListOfGroup(this.proxyurl + this.urlApi)
@@ -70,8 +72,18 @@ export class DashboardComponent implements OnInit {
           },
           () => {
             this.counter = this.tierScooter.length;
-            this.tierService.saveTier( new Livetracker(null, this.counter, null)).subscribe();
+
+            this.tierService.saveScooterCount( new Livetracker(null, this.counter, null)).subscribe();
             console.log('saved a new tier counter ' + this.counter);
+
+            this.tierScooter.forEach(s => {
+              s.timeStamp = Date();
+            });
+
+            this.tierService.saveScooter(this.tierScooter).subscribe();
+            console.log('and a new scooter');
+            console.log(this.tierScooter);
+
             this.getAllScooters();
           });
     });
@@ -92,16 +104,17 @@ export class DashboardComponent implements OnInit {
           this.yearAndDay = x.timestamp.substring(0, 10);
           this.time = x.timestamp.substring(11, 16);
           let isIncluded = false;
+
           this.scooterActiveDateData.forEach( y => {
             if (y === this.time) {
               isIncluded = true;
             }
           });
+
           if (isIncluded === false) {
             this.scooterActiveDateData.push(this.time);
           }
         });
-        console.log(this.diagramLabel);
       });
   }
 

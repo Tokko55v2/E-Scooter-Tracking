@@ -29,11 +29,11 @@ export class TierService {
     return this.http.get<Livetracker[]>(environment.tierTrackUrl);
   }
 
-  public saveTier(tierTracker: Livetracker) {
+  public saveScooterCount(tierTracker: Livetracker) {
     return this.http.post( environment.tierTrackUrl, tierTracker);
   }
 
-  public save(tierScooter: ScooterTier[]) {
-    return this.http.post<ScooterTier>(environment.tierTrackUrl, tierScooter);
+  public saveScooter(tierScooter: ScooterTier[]) {
+    return this.http.post<ScooterTier>(environment.tierUrl, tierScooter);
   }
 }
