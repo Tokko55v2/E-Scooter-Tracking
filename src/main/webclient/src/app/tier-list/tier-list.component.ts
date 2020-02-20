@@ -13,12 +13,11 @@ export class TierListComponent implements OnInit {
   tier: ScooterTier[];
   error: any;
   isLoading$: boolean;
-  amount: number;
 
-  constructor(private tierService: TierService, private router: Router) {this.amount = 150; }
+  constructor(private tierService: TierService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getAmount( this.amount );
+    this.getAll();
   }
 
 

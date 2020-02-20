@@ -11,7 +11,5 @@ public interface TierService {
 
     Flux<Tier> getById(String licencePlate);
 
-    List<Tier> getAmountOfX(String amount);
-
-    List<Tier> findAll();
+    void saveNewScooterToScooterDB();
 }

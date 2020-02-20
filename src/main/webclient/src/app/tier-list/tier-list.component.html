@@ -20,8 +20,6 @@
         <th scope="col">Licence Plate</th>
         <th scope="col">City</th>
         <th scope="col">Status</th>
-        <th scope="col">Last location Update</th>
-        <th scope="col">Last state Change</th>
         <th scope="col">Battery Level</th>
         <th scope="col">Max Speed</th>
         <th scope="col">Is Rentable</th>
@@ -32,10 +30,8 @@
         <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.licencePlate }}</td>
         <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.zoneId }}</td>
         <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.state }}</td>
-        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.lastLocationUpdate }}</td>
-        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.lastStateChange }}</td>
-        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.batteryLevel }}</td>
-        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.maxSpeed }}</td>
+        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.batteryLevel }} %</td>
+        <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.maxSpeed }} km/h</td>
         <td class="table-row" (click)="getSpecificScooter(tier.licencePlate)">{{ tier.isRentable }}</td>
       </tr>
       </tbody>

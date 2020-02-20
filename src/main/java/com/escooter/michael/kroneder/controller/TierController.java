@@ -1,6 +1,8 @@
 package com.escooter.michael.kroneder.controller;
 
 import com.escooter.michael.kroneder.entity.Tier;
+import com.escooter.michael.kroneder.entity.TierScooters;
+import com.escooter.michael.kroneder.service.TierScooterService;
 import com.escooter.michael.kroneder.service.TierService;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -14,18 +16,21 @@ public class TierController {
 
     private TierService service;
 
-    public TierController(TierService service){
+    private TierScooterService tierScooterService;
+
+    public TierController(TierService service, TierScooterService tierScooterService){
         this.service = service;
+        this.tierScooterService = tierScooterService;
     }
 
     @GetMapping(value = "scooters")
-    public List<Tier> getAll(){
-        return service.findAll();
+    public Flux<TierScooters> getAll(){
+        return tierScooterService.findAll();
     }
 
     @GetMapping(value = "/{amount}")
-    public List<Tier> getFirstX(@PathVariable("amount") String amount){
-        return service.getAmountOfX(amount);
+    public List<TierScooters> getFirstX(@PathVariable("amount") String amount){
+        return tierScooterService.findAmount(Integer.parseInt(amount));
     }
 
     @GetMapping(value = "scooters/{licencePlate}")
