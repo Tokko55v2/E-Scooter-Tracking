@@ -5,7 +5,14 @@ ul {
   float: left;
   width: 33.33%;
   padding: 10px;
-  height: 550px;
+  height: 280px;
+}
+
+.columnGraph {
+  float: left;
+  width: 66.66%;
+  padding: 10px;
+  height: 560px;
 }
 
 .row:after {

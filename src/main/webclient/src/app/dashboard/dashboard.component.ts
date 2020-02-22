@@ -28,10 +28,12 @@ export class DashboardComponent implements OnInit {
   scooterActiveDateData = [];
   yearAndDay: string;
   time: string;
+  hour: number;
+  minutes: string;
   diagramLabel: string;
 
   lineChartData: ChartDataSets[] = [
-    { data: this.scooterActiveData, label: 'Active Scooters 2020-02-13' },
+    { data: this.scooterActiveData, label: 'Active Scooters 2020-02-21' },
   ];
 
   lineChartLabels: Label[] = this.scooterActiveDateData;
@@ -59,7 +61,12 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllScooters();
+  }
+
+  parked() {
     console.log('Started API subscription');
+
     this.timeinterval.subscribe(x => {
       this.api
         .getListOfGroup(this.proxyurl + this.urlApi)
@@ -74,20 +81,16 @@ export class DashboardComponent implements OnInit {
             this.counter = this.tierScooter.length;
 
             this.tierService.saveScooterCount( new Livetracker(null, this.counter, null)).subscribe();
-            console.log('saved a new tier counter ' + this.counter);
 
             this.tierScooter.forEach(s => {
               s.timeStamp = Date();
             });
 
             this.tierService.saveScooter(this.tierScooter).subscribe();
-            console.log('and a new scooter');
-            console.log(this.tierScooter);
-
+            console.log('new Scooter Data received');
             this.getAllScooters();
           });
     });
-    this.getAllScooters();
   }
 
   getAllScooters() {
@@ -103,6 +106,12 @@ export class DashboardComponent implements OnInit {
           this.scooterActiveData.push(x.scooterCounter);
           this.yearAndDay = x.timestamp.substring(0, 10);
           this.time = x.timestamp.substring(11, 16);
+          this.hour = Number(this.time.substring(0, 2));
+          this.minutes = this.time.substring(2, 5);
+
+          this.hour += 1;
+          this.time = String(this.hour) + this.minutes;
+
           let isIncluded = false;
 
           this.scooterActiveDateData.forEach( y => {

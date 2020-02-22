@@ -4,7 +4,37 @@
     <p>Live tracker of active scooters
       <br /> in <code>.VIENNA</code> {{counter}}
     </p>
+  </div>
+  <div class="column">
+    <p>Facts about the Project:</p>
+    <p>Data collected: <code>174.311 Objects</code></p>
+    <p>DB Size: <code> 82 MB</code></p>
+    <p>Date: <code>21.02.2020</code></p>
+    <p>Between: <code> 7:54am and 11:09pm</code></p>
+    <p>Technology stack
+    <ul>
+      <li><code>NOSql Mongodb</code></li>
+      <li><code>Backend Spring Boot Reactive</code></li>
+      <li><code>Frontend Angular 9</code></li>
+    </ul>
+  </div>
+  <div class="column">
+    <p>Facts about the Scooter API:</p>
+    <p>State: <code>Active can be everything, I guess it means bookable or not</code></p>
+    <p>lastLocationUpdate: <code> format date; says when was the last location update</code></p>
+    <p>lastStateChange: <code> format date; says when was the last state change </code></p>
+    <p>batteryLevel: <code> getting back a value of the battery inside the scooter. Like 80%</code></p>
+    <p>lat: <code> latitude; type float or double</code></p>
+    <p>lng: <code> longitude; type float or double</code></p>
+    <p>maxSpeed: <code> says what is the maximum speed of the scooter</code></p>
+    <p>zoneId: <code> the zone where the scooter is like VIENNA</code></p>
+    <p>licencePlate: <code> is unique number</code></p>
+    <p>vin: <code> zoneId and licencePlate together like AC12345</code></p>
+    <p>code: <code> ¯\_(⊙︿⊙)_/¯</code></p>
+    <p>isRental: <code> seems always true. Scooter is not visible when state false</code></p>
+  </div>
 
+  <div class="columnGraph">
     <div class="chart-wrapper my-5 ml-2">
       <canvas baseChart
               [datasets]="lineChartData"
@@ -16,35 +46,6 @@
               [plugins]="lineChartPlugins">
       </canvas>
     </div>
-
-  </div>
-  <div class="column">
-    <p>Facts about the Project:</p>
-    <p>Data collected: <code>103.888</code></p>
-    <p>DB Size: <code> 12 MB</code></p>
-    <p>Date: <code>11.02.2020</code></p>
-    <p>Between: <code> 11am and 8pm</code></p>
-    <p>Technology stack
-    <ul>
-      <li><code>NOSql Mongodb</code></li>
-      <li><code>Backend Spring Boot Reactive</code></li>
-      <li><code>Frontend Angular 9</code></li>
-    </ul>
-  </div>
-  <div class="column">
-    <p>Facts about the Scooter API:</p>
-    <p>State: <code>Active can be everything, I guess it means bookable or not</code></p>
-    <p>lastLocationUpdate: <code> is a date</code></p>
-    <p>lastStateChange: <code> is a date </code></p>
-    <p>batteryLevel: <code> type: is a number</code></p>
-    <p>lat: <code> latitude; type float or double</code></p>
-    <p>lng: <code> longitude; type float or double</code></p>
-    <p>maxSpeed: <code> type number in JAVA int</code></p>
-    <p>zoneId: <code> the zone where the scooter is like VIENNA</code></p>
-    <p>licencePlate: <code> is a string</code></p>
-    <p>vin: <code> zoneId and licencePlate together like AC12345</code></p>
-    <p>code: <code> ¯\_(⊙︿⊙)_/¯</code></p>
-    <p>isRental: <code> seems always true. Scooter is not visible when state false</code></p>
   </div>
 </div>
 </body>
