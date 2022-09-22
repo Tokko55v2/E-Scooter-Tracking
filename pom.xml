@@ -17,7 +17,7 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<springfox-swagger.version>2.9.2</springfox-swagger.version>
+		<springfox-swagger.version>3.0.0</springfox-swagger.version>
 		<rest-assured.version>3.2.0</rest-assured.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

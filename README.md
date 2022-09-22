@@ -1,2 +1,2 @@
-# e-scooter-map
-## TODO :(
+# E-Scooter Tracking Application
+
